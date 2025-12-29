@@ -1,13 +1,5 @@
-import SoundTile from '@/components/SoundTile';
-
-const mockSounds = [
-  { title: 'Funny Meow', audioSrc: '/sample-sound.mp3' },
-  { title: 'Dramatic Chipmunk', audioSrc: '/sample-sound.mp3' },
-  { title: '"It\'s a Trap!"', audioSrc: '/sample-sound.mp3' },
-  { title: 'Air Horn', audioSrc: '/sample-sound.mp3' },
-  { title: 'Sad Trombone', audioSrc: '/sample-sound.mp3' },
-  { title: 'Crickets', audioSrc: '/sample-sound.mp3' },
-];
+import SoundGrid from './components/SoundGrid';
+import PlaylistManager from './components/PlaylistManager';
 
 export default function Home() {
   return (
@@ -20,17 +12,11 @@ export default function Home() {
         </button>
       </section>
 
+      <PlaylistManager />
+
       <section>
         <h2 className="text-3xl font-bold mb-6 text-center">Hear What's Hot</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {mockSounds.map((sound) => (
-            <SoundTile
-              key={sound.title}
-              title={sound.title}
-              audioSrc={sound.audioSrc}
-            />
-          ))}
-        </div>
+        <SoundGrid />
       </section>
     </div>
   );

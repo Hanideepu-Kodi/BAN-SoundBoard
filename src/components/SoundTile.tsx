@@ -3,6 +3,7 @@
 // src/components/SoundTile.tsx
 
 import React from 'react';
+import { playAudio } from '../lib/audioManager';
 
 type SoundTileProps = {
   title: string;
@@ -11,8 +12,7 @@ type SoundTileProps = {
 
 const SoundTile: React.FC<SoundTileProps> = ({ title, audioSrc }) => {
   const handlePlay = () => {
-    const audio = new Audio(audioSrc);
-    audio.play();
+    playAudio(audioSrc);
   };
 
   return (
