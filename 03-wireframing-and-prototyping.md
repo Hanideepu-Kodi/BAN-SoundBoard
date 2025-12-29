@@ -61,7 +61,7 @@ This document presents low-fidelity wireframes for the key screens of the soundb
 | [Footer Links]                                     [Social Media]    |
 +----------------------------------------------------------------------+
 ```
-*   **Sound Card Interaction:** Hovering over a sound card reveals a "Play" button and an "Add to Playlist" button.
+*   **Sound Card Interaction:** Clicking a sound tile plays the sound instantly. Hovering reveals an "Add to Playlist" icon.
 
 ---
 
@@ -83,12 +83,13 @@ This document presents low-fidelity wireframes for the key screens of the soundb
 +----------------------------------------------------------------------+
 |                                                                      |
 |  <-- Sound List -->                                                  |
-|  [Play] [Sound Title 1] [Duration] [Add to my Playlist]              |
-|  [Play] [Sound Title 2] [Duration] [Add to my Playlist]              |
-|  [Play] [Sound Title 3] [Duration] [Add to my Playlist]              |
+|  [Sound Title 1] [Duration] [Add to my Playlist]                     |
+|  [Sound Title 2] [Duration] [Add to my Playlist]                     |
+|  [Sound Title 3] [Duration] [Add to my Playlist]                     |
 |  ...                                                                 |
 |                                                                      |
 +----------------------------------------------------------------------+
+*   **Interaction:** Clicking a sound's row plays the sound.
 | [Footer Links]                                     [Social Media]    |
 +----------------------------------------------------------------------+
 ```

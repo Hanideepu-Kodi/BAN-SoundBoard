@@ -51,11 +51,11 @@ This document outlines the visual identity for the soundboard application, inclu
     *   Curated playlists and trending sounds will be displayed in clean, modern cards with rounded corners and a slight drop shadow.
 *   **Explore Page:**
     *   The search bar will be prominent and easy to use.
-    *   Sound cards will have a hover effect that reveals a play button and an "add to playlist" icon.
+    *   Sound cards will be designed as interactive tiles. Clicking a tile will instantly play the sound, providing immediate feedback. A subtle animation or color shift on the tile will indicate playback. Hovering will reveal an "add to playlist" icon.
     *   Filters will be presented as dropdowns or buttons, depending on the number of options.
 *   **Playlist Page:**
     *   The playlist header will be visually engaging, with the playlist title in a large, bold font.
-    *   The sound list will be clean and easy to scan, with clear visual cues for playing and adding sounds.
+    *   The sound list will be a series of rows or tiles. Clicking anywhere on the item will play the sound, with no separate play button, simplifying the interface.
 *   **User Dashboard:**
     *   The sidebar navigation will use icons and text for clarity.
     *   The main content area will be spacious and uncluttered, with a clear focus on the user's content.
