@@ -33,3 +33,18 @@ def read_playlist(playlist_id: int, db: Session = Depends(get_db)):
     if db_playlist is None:
         raise HTTPException(status_code=404, detail="Playlist not found")
     return db_playlist
+
+@router.post("/playlists/{playlist_id}/sounds/{sound_id}", response_model=schemas.Playlist)
+def add_sound_to_playlist(playlist_id: int, sound_id: int, db: Session = Depends(get_db)):
+    db_playlist = db.query(models.Playlist).filter(models.Playlist.id == playlist_id).first()
+    if db_playlist is None:
+        raise HTTPException(status_code=404, detail="Playlist not found")
+
+    db_sound = db.query(models.Sound).filter(models.Sound.id == sound_id).first()
+    if db_sound is None:
+        raise HTTPException(status_code=404, detail="Sound not found")
+
+    db_playlist.sounds.append(db_sound)
+    db.commit()
+    db.refresh(db_playlist)
+    return db_playlist
