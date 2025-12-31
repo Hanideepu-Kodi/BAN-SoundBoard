@@ -1,6 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
-// Define a type for the sound data
 export interface Sound {
   id: number;
   name: string;
@@ -8,7 +7,6 @@ export interface Sound {
   owner_id: number;
 }
 
-// Define a type for the playlist data
 export interface Playlist {
   id: number;
   name: string;
@@ -17,16 +15,11 @@ export interface Playlist {
   sounds: Sound[];
 }
 
-// Define a type for the data needed to create a playlist
 export interface PlaylistCreate {
   name: string;
   description?: string;
 }
 
-/**
- * Fetches all playlists from the backend.
- * @returns A promise that resolves to an array of playlists.
- */
 export const getPlaylists = async (): Promise<Playlist[]> => {
   const response = await fetch(`${API_BASE_URL}/playlists/`);
   if (!response.ok) {
@@ -35,17 +28,10 @@ export const getPlaylists = async (): Promise<Playlist[]> => {
   return response.json();
 };
 
-/**
- * Creates a new playlist.
- * @param playlistData The data for the new playlist.
- * @returns A promise that resolves to the newly created playlist.
- */
 export const createPlaylist = async (playlistData: PlaylistCreate): Promise<Playlist> => {
   const response = await fetch(`${API_BASE_URL}/playlists/`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(playlistData),
   });
   if (!response.ok) {
@@ -54,10 +40,6 @@ export const createPlaylist = async (playlistData: PlaylistCreate): Promise<Play
   return response.json();
 };
 
-/**
- * Fetches all sounds from the backend.
- * @returns A promise that resolves to an array of sounds.
- */
 export const getSounds = async (): Promise<Sound[]> => {
     const response = await fetch(`${API_BASE_URL}/sounds/`);
     if (!response.ok) {
@@ -66,12 +48,6 @@ export const getSounds = async (): Promise<Sound[]> => {
     return response.json();
 };
 
-/**
- * Adds a sound to a playlist.
- * @param playlistId The ID of the playlist.
- * @param soundId The ID of the sound.
- * @returns A promise that resolves to the updated playlist.
- */
 export const addSoundToPlaylist = async (playlistId: number, soundId: number): Promise<Playlist> => {
     const response = await fetch(`${API_BASE_URL}/playlists/${playlistId}/sounds/${soundId}`, {
         method: 'POST',
@@ -80,4 +56,20 @@ export const addSoundToPlaylist = async (playlistId: number, soundId: number): P
         throw new Error('Failed to add sound to playlist');
     }
     return response.json();
+};
+
+export const uploadSound = async (name: string, file: File): Promise<Sound> => {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('file', file);
+
+  const response = await fetch(`${API_BASE_URL}/sounds/upload`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to upload sound');
+  }
+  return response.json();
 };
